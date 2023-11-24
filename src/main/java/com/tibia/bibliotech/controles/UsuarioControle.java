@@ -33,5 +33,11 @@ public class UsuarioControle {
     model.addAttribute("usuario", new Usuario());
     return "/usuario/criar";
   }
+
+  @GetMapping("/editar/{id}")
+  public String editar(Model model, @PathVariable Long id) {
+    model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
+    return "/usuario/editar";
+  }
   
 }

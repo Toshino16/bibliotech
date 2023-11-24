@@ -26,7 +26,7 @@ public class UsuarioServico {
     return usuarioRepositorio.save(usuario);
   }
 
-  public Usuario atualizarPeloId(Usuario usuario, Long id) {
+  public Usuario editarPeloId(Usuario usuario, Long id) {
     usuario.setId(id);
     return usuarioRepositorio.save(usuario);
   }

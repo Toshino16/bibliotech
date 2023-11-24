@@ -23,20 +23,28 @@ public class UsuarioControle {
   }
 
   @GetMapping("/{id}")
-  public String buscarPeloId(Model model, @PathVariable Long id) {
+  public String detalhes(Model model, @PathVariable Long id) {
     model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
+    model.addAttribute("id", id);
     return "/usuario/detalhes";
   }
 
-  @GetMapping("/criar")
-  public String criar(Model model) {
+  @GetMapping("/cadastro")
+  public String cadastro(Model model) {
     model.addAttribute("usuario", new Usuario());
-    return "/usuario/criar";
+    return "/usuario/cadastro";
+  }
+
+  @GetMapping("/login")
+  public String login(Model model) {
+    model.addAttribute("usuario", new Usuario());
+    return "/usuario/login";
   }
 
   @GetMapping("/editar/{id}")
   public String editar(Model model, @PathVariable Long id) {
     model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
+    model.addAttribute("id", id);
     return "/usuario/editar";
   }
   

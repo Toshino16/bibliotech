@@ -18,6 +18,10 @@ public class UsuarioServico {
     return usuarioRepositorio.findAll();
   }
 
+  public Usuario buscarPeloNomeESenha(Usuario usuario) {
+    return usuarioRepositorio.findByNomeAndSenha(usuario.getNome(), usuario.getSenha());
+  }
+
   public Usuario buscarPeloId(Long id) {
     return usuarioRepositorio.findById(id).get();
   }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliotech</title>
+  <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/lista.css}">
+  <!-- <script th:src="@{/bootstrap/css/bootstrap.min.js}"></script> -->
+</head>
+<body>
+  <section class="intro">
+    <div class="bg-image h-100" th:style="'background:url(' + @{/assets/background.jpg} + ');'">
+      <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="card bg-dark shadow-2-strong">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-dark table-borderless mb-0">
+                      <thead>
+                        <tr>
+                          <th scope="col">ID</th>
+                          <th scope="col">NOME</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="usuario : ${lista}">
+                          <th scope="row" th:text="${usuario.id}"></th>
+                          <td th:text="${usuario.nome}"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

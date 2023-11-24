@@ -1,5 +1,9 @@
 package com.tibia.bibliotech.modelos;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,6 +16,9 @@ public class Usuario {
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   private String nome;
+  private String email;
   private String senha;
+  @DateTimeFormat(pattern = "dd/MM/yyyy")
+  private Date criadoEm;
   
 }

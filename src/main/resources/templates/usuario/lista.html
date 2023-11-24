@@ -23,12 +23,16 @@
                         <tr>
                           <th scope="col">ID</th>
                           <th scope="col">NOME</th>
+                          <th scope="col">EMAIL</th>
+                          <th scope="col">CRIADO EM</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr th:each="usuario : ${lista}">
                           <th scope="row" th:text="${usuario.id}"></th>
                           <td th:text="${usuario.nome}"></td>
+                          <td th:text="${usuario.email}"></td>
+                          <td th:text="${{usuario.criadoEm}}"></td>
                         </tr>
                       </tbody>
                     </table>

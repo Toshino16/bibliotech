@@ -1,5 +1,6 @@
 package com.tibia.bibliotech.servicos;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class UsuarioServico {
   }
 
   public Usuario criar(Usuario usuario) {
+    usuario.setCriadoEm(new Date());
     return usuarioRepositorio.save(usuario);
   }
 

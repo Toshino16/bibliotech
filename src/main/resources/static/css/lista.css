@@ -24,3 +24,8 @@ tbody td {
 .card {
   border-radius: .5rem;
 }
+
+h1 {
+  color: #fff;
+  margin-bottom: 30px;
+}

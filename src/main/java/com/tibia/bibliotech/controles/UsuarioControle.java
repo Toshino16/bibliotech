@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tibia.bibliotech.modelos.Usuario;
@@ -39,6 +41,18 @@ public class UsuarioControle {
     model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
     model.addAttribute("id", id);
     return "/usuario/editar";
+  }
+
+  @PostMapping("/cadastro")
+  public String cadastro(@ModelAttribute Usuario usuario) {
+    usuarioServico.criar(usuario);
+    return "redirect:/jogo";
+  }
+
+  @GetMapping("/delete/{id}")
+  public String deletar(@PathVariable Long id) {
+    usuarioServico.deletarPeloId(id);
+    return "redirect:/usuario";
   }
   
 }

@@ -23,6 +23,7 @@
                             <th scope="col">NOME</th>
                             <th scope="col">EMAIL</th>
                             <th scope="col">CRIADO EM</th>
+                            <th scope="col">AÇÕES</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -31,6 +32,10 @@
                             <td th:text="${usuario.nome}"></td>
                             <td th:text="${usuario.email}"></td>
                             <td th:text="${{usuario.criadoEm}}"></td>
+                            <td colspan="2">
+                              <a th:href="@{'/usuario/edit/' + ${usuario.id}}" class="btn btn-info">Editar</a>
+                              <a th:href="@{'/usuario/delete/' + ${usuario.id}}" class="btn btn-danger">Deletar</a>
+                            </td>
                           </tr>
                         </tbody>
                       </table>

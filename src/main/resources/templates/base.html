@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bibliotech</title>
   <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
-  <script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
   <link rel="stylesheet" th:href="@{/css/base.css}">
   <link rel="stylesheet" th:href="@{/css/lista.css}">
 </head>
@@ -29,11 +29,19 @@
           <li class="nav-item">
             <a class="nav-link mx-2" th:href="@{/jogo}"><i class="fas fa-plus-circle pe-2"></i>Jogos</a>
           </li>
+          <!-- if auth.nome == "admin" -->
           <li class="nav-item">
             <a class="nav-link mx-2" th:href="@{/usuario}"><i class="fas fa-bell pe-2"></i>Usuários</a>
           </li>
-          <li class="nav-item ms-3">
-            <a class="btn btn-danger btn-rounded" th:href="@{/usuario/logout}">Sair</a>
+          <!-- endif -->
+          <li class="nav-item dropdown">
+            <a class="nav-link mx-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Conta
+            </a>
+            <ul class="dropdown-menu">
+              <!-- <li><a class="dropdown-item" th:href="@{'/usuario/editar/' + ${auth.id}}">Editar</a></li> -->
+              <li><a class="dropdown-item" th:href="@{/usuario/logout}">Sair</a></li>
+            </ul>
           </li>
         </ul>
       </div>

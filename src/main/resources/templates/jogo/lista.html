@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" th:insert="~{base}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliotech</title>
+</head>
+<body>
+  <th:block th:fragment="content">
+    <section class="intro">
+      <div class="bg-image h-100" th:style="'background:url(' + @{/assets/background-usuario-lista.jpg} + ');'">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0,0,0,.25);">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-12">
+                <div class="card bg-dark shadow-2-strong">
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-dark table-borderless mb-0">
+                        <h1>Lista de Jogos</h1>
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">PREÇO</th>
+                            <th scope="col">CADASTRADO EM</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr th:each="jogo : ${lista}">
+                            <th scope="row" th:text="${jogo.id}"></th>
+                            <td th:text="${jogo.nome}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(jogo.preco, 1, 'COMMA', 2, 'POINT')}"></td>
+                            <td th:text="${{jogo.cadastradoEm}}"></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </th:block>
+</body>
+</html>

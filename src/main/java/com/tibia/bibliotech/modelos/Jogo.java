@@ -2,6 +2,8 @@ package com.tibia.bibliotech.modelos;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class Jogo {
   private String url;
   private String imagem;
   private String descricao;
+  @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date cadastradoEm;
   
 }

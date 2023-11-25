@@ -65,5 +65,11 @@ public class UsuarioControle {
     usuarioServico.editarPeloId(usuario, id);
     return "redirect:/jogo";
   }
+
+  @GetMapping("/logout")
+  public String logout() {
+    // TODO: implementar sistema de logout
+    return "redirect:/usuario/login";
+  }
   
 }

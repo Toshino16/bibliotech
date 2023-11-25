@@ -22,13 +22,6 @@ public class UsuarioControle {
     return "/usuario/lista";
   }
 
-  @GetMapping("/{id}")
-  public String detalhes(Model model, @PathVariable Long id) {
-    model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
-    model.addAttribute("id", id);
-    return "/usuario/detalhes";
-  }
-
   @GetMapping("/cadastro")
   public String cadastro(Model model) {
     model.addAttribute("usuario", new Usuario());

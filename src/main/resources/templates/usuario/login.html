@@ -21,12 +21,12 @@
 
                 <div class="form-outline form-white mb-4">
                   <label class="form-label" for="typeEmailX">Usuário</label>
-                  <input type="text" class="form-control form-control-lg" th:field="*{nome}"/>
+                  <input type="text" class="form-control form-control-lg" th:field="*{nome}" required/>
                 </div>
 
                 <div class="form-outline form-white mb-4">
                   <label class="form-label" for="typePasswordX">Senha</label>
-                  <input type="password" class="form-control form-control-lg" th:field="*{senha}"/>
+                  <input type="password" class="form-control form-control-lg" th:field="*{senha}" required/>
                 </div>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>

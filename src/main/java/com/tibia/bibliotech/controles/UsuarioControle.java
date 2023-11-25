@@ -39,8 +39,13 @@ public class UsuarioControle {
   @GetMapping("/editar/{id}")
   public String editar(Model model, @PathVariable Long id) {
     model.addAttribute("usuario", usuarioServico.buscarPeloId(id));
-    model.addAttribute("id", id);
     return "/usuario/editar";
+  }
+
+  @PostMapping("/login")
+  public String login(@ModelAttribute Usuario usuario) {
+    // TODO: implementar sistema de login
+    return "redirect:/jogo";
   }
 
   @PostMapping("/cadastro")
@@ -49,10 +54,16 @@ public class UsuarioControle {
     return "redirect:/jogo";
   }
 
-  @GetMapping("/delete/{id}")
+  @GetMapping("/deletar/{id}")
   public String deletar(@PathVariable Long id) {
     usuarioServico.deletarPeloId(id);
-    return "redirect:/usuario";
+    return "redirect:/usuario/cadastro";
+  }
+
+  @PostMapping("/editar/{id}")
+  public String editar(@ModelAttribute Usuario usuario, @PathVariable Long id) {
+    usuarioServico.editarPeloId(usuario, id);
+    return "redirect:/jogo";
   }
   
 }

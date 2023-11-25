@@ -1,5 +1,7 @@
 package com.tibia.bibliotech.modelos;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,5 +18,6 @@ public class Jogo {
   private String url;
   private String imagem;
   private String descricao;
+  private Date cadastradoEm;
   
 }

@@ -25,7 +25,7 @@ tbody td {
   border-radius: .5rem;
 }
 
-h1 {
-  color: #fff;
-  margin-bottom: 30px;
+.h1 {
+  color: #fff !important;
+  margin-bottom: 30px !important;
 }

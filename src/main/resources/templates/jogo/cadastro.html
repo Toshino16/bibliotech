@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:insert="~{base}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,47 +7,55 @@
   <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
-  <section class="vh-100 gradient-custom bg-image h-100" th:style="'background:url(' + @{/assets/background-usuario-cadastro.jpg} + ');'">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-dark text-white" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-
-              <form method="POST" th:action="@{/usuario/cadastro}" th:object="${usuario}" class="mb-md-5 mt-md-4 pb-5" autocomplete="OFF">
-
-                <h2 class="fw-bold mb-2 text-uppercase">Cadastro</h2>
-                <p class="text-white-50 mb-5">Por favor, preencha os campos corretamente.</p>
-
-                <div class="form-outline form-white mb-4">
-                  <label class="form-label">Usuário</label>
-                  <input type="text" class="form-control form-control-lg" th:field="*{nome}" required/>
-                </div>
-
-                <div class="form-outline form-white mb-4">
-                  <label class="form-label">Email</label>
-                  <input type="email" class="form-control form-control-lg" th:field="*{email}" required/>
-                </div>
-
-                <div class="form-outline form-white mb-4">
-                  <label class="form-label">Senha</label>
-                  <input type="password" class="form-control form-control-lg" th:field="*{senha}" required/>
-                </div>
-
-                <button class="btn btn-outline-success btn-lg px-5" type="submit">Cadastrar</button>
-
-              </form>
-
-              <div>
-                <p class="mb-0">já possui uma conta? <a th:href="@{/usuario/login}" class="text-white-50 fw-bold">Login</a>
-                </p>
+  <th:block th:fragment="content">
+    <section class="vh-100 gradient-custom bg-image h-100" th:style="'background:url(' + @{/assets/background-jogo-cadastro.jpg} + ');'">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+  
+                <form method="POST" th:action="@{/jogo/cadastro}" th:object="${jogo}" class="mb-md-1 mt-md-4 pb-5" autocomplete="OFF" enctype="multipart/form-data">
+  
+                  <h2 class="fw-bold mb-2 text-uppercase">Cadastro de Jogo</h2>
+                  <p class="text-white-50 mb-5">Todos os campos devem ser preenchidos.</p>
+  
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control form-control-lg" th:field="*{nome}" required/>
+                  </div>
+  
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Preço</label>
+                    <input type="number" class="form-control form-control-lg" th:field="*{preco}" required/>
+                  </div>
+  
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">URL</label>
+                    <input type="url" class="form-control form-control-lg" th:field="*{url}" required/>
+                  </div>
+  
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Imagem</label>
+                    <input type="file" class="form-control form-control-lg" accept="image/*" th:field="*{imagem}" required/>
+                  </div>
+  
+                  <div class="form-outline form-white mb-4">
+                    <label class="form-label">Descrição</label>
+                    <textarea type="text" class="form-control form-control-lg" rows="2" th:field="*{descricao}" required></textarea>
+                  </div>
+  
+                  <button class="btn btn-outline-success btn-lg px-5" type="submit">Cadastrar</button>
+                  <a th:href="@{/jogo}" class="btn btn-outline-danger btn-lg px-5" type="submit">Cancelar</a>
+  
+                </form>
+  
               </div>
-
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </th:block>
 </body>
 </html>

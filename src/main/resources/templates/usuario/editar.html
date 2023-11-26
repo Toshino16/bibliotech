@@ -35,7 +35,8 @@
                   </div>
   
                   <button class="btn btn-outline-success btn-lg px-5" type="submit">Editar</button>
-                  <a th:href="@{/usuario}" class="btn btn-outline-danger btn-lg px-5">Cancelar</a>
+                  <a th:href="@{'/usuario/deletar/' + ${usuario.id}}" class="btn btn-outline-danger btn-lg px-5">Deletar</a>
+                  <a th:href="@{/jogo}" class="btn btn-outline-danger btn-lg px-5">Cancelar</a>
   
                 </form>
   

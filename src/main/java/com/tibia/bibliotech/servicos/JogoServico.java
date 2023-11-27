@@ -33,11 +33,11 @@ public class JogoServico {
     return jogoRepositorio.save(jogo);
   }
 
-  public Jogo editarPeloId(Jogo usuario, Long id) {
+  public Jogo editarPeloId(Jogo jogo, Long id) {
     Jogo jogoEncontrado = jogoRepositorio.findById(id).get();
-    usuario.setId(id);
-    usuario.setCadastradoEm(jogoEncontrado.getCadastradoEm());
-    return jogoRepositorio.save(usuario);
+    jogo.setId(id);
+    jogo.setCadastradoEm(jogoEncontrado.getCadastradoEm());
+    return jogoRepositorio.save(jogo);
   }
 
   public void deletarPeloId(Long id) {

@@ -35,6 +35,9 @@ public class UsuarioServico {
   public Usuario editarPeloId(Usuario usuario, Long id) {
     Usuario usuarioEncontrado = usuarioRepositorio.findById(id).get();
     usuario.setId(id);
+    if(usuario.getSenha().isEmpty()) {
+      usuario.setSenha(usuarioEncontrado.getSenha());
+    }
     usuario.setCriadoEm(usuarioEncontrado.getCriadoEm());
     return usuarioRepositorio.save(usuario);
   }

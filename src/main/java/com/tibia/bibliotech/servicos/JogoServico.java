@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tibia.bibliotech.modelos.Jogo;
 import com.tibia.bibliotech.repositorios.JogoRepositorio;
@@ -14,6 +15,8 @@ public class JogoServico {
 
   @Autowired
   private JogoRepositorio jogoRepositorio;
+  @Autowired
+  private ArquivoServico arquivoServico;
 
   public List<Jogo> lista() {
     return jogoRepositorio.findAll();
@@ -23,8 +26,10 @@ public class JogoServico {
     return jogoRepositorio.findById(id).get();
   }
 
-  public Jogo criar(Jogo jogo) {
+  public Jogo criar(Jogo jogo, MultipartFile arquivo) {
     jogo.setCadastradoEm(new Date());
+    arquivoServico.salvar(arquivo);
+    jogo.setImagem(arquivo.getOriginalFilename());
     return jogoRepositorio.save(jogo);
   }
 
@@ -36,7 +41,9 @@ public class JogoServico {
   }
 
   public void deletarPeloId(Long id) {
-    jogoRepositorio.deleteById(id);
+    Jogo jogo = jogoRepositorio.findById(id).get();
+    arquivoServico.deletar(jogo.getImagem());
+    jogoRepositorio.delete(jogo);
   }
   
 }

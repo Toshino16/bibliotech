@@ -4,6 +4,7 @@ import java.util.Date;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Jogo {
   private Float preco;
   private String url;
   private String imagem;
+  @Column(length = 350)
   private String descricao;
   @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date cadastradoEm;

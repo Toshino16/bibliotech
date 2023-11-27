@@ -1,5 +1,6 @@
 package com.tibia.bibliotech.servicos;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -26,10 +27,9 @@ public class JogoServico {
     return jogoRepositorio.findById(id).get();
   }
 
-  public Jogo criar(Jogo jogo, MultipartFile arquivo) {
+  public Jogo criar(Jogo jogo, MultipartFile arquivo) throws IOException {
     jogo.setCadastradoEm(new Date());
-    arquivoServico.salvar(arquivo);
-    jogo.setImagem(arquivo.getOriginalFilename());
+    jogo.setImagem(arquivoServico.salvar(arquivo));
     return jogoRepositorio.save(jogo);
   }
 

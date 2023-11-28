@@ -33,10 +33,14 @@ public class JogoServico {
     return jogoRepositorio.save(jogo);
   }
 
-  public Jogo editarPeloId(Jogo jogo, Long id) {
+  public Jogo editarPeloId(Jogo jogo, MultipartFile arquivo, Long id) throws IOException {
     Jogo jogoEncontrado = jogoRepositorio.findById(id).get();
     jogo.setId(id);
     jogo.setCadastradoEm(jogoEncontrado.getCadastradoEm());
+    jogo.setImagem(jogoEncontrado.getImagem());
+    if(!arquivo.isEmpty()) {
+      arquivoServico.editar(arquivo, jogoEncontrado.getImagem());
+    }
     return jogoRepositorio.save(jogo);
   }
 

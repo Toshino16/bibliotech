@@ -34,6 +34,12 @@ public class JogoControle {
     return "/jogo/cadastro";
   }
 
+  @GetMapping("/editar/{id}")
+  public String editar(Model model, @PathVariable Long id) {
+    model.addAttribute("jogo", jogoServico.buscarPeloId(id));
+    return "/jogo/editar";
+  }
+
   @PostMapping("/cadastro")
   public String cadastro(@ModelAttribute Jogo jogo, @RequestParam("arquivo") MultipartFile arquivo) throws IOException {
     jogoServico.criar(jogo, arquivo);
@@ -43,6 +49,12 @@ public class JogoControle {
   @GetMapping("/deletar/{id}")
   public String deletar(@PathVariable Long id) {
     jogoServico.deletarPeloId(id);
+    return "redirect:/jogo";
+  }
+
+  @PostMapping("/editar/{id}")
+  public String editar(@ModelAttribute Jogo jogo, @PathVariable Long id, @RequestParam("arquivo") MultipartFile arquivo) throws IOException {
+    jogoServico.editarPeloId(jogo, arquivo, id);
     return "redirect:/jogo";
   }
   

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" th:insert="~{base}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bibliotech</title>
+  <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+  <th:block th:fragment="content">
+    <section class="vh-100 gradient-custom bg-image h-100" th:style="'background:url(' + @{/assets/background-jogo-detalhes.jpg} + ');'">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 1rem;">
+              <div class="card-body p-5 text-center">
+                <div class="mb-md-1 mt-md-4 pb-1">
+
+                  <img th:src="@{'/uploads/' + ${jogo.imagem}}" width="100%">
+  
+                  <h2 class="fw-bold mb-2 mt-5 text-uppercase" th:text="${jogo.nome}"></h2>
+                  <p class="text-white-50 mb-4" th:text="${jogo.descricao}"></p>
+                  <p class="h4 mb-4" th:text="'Por R$ ' + ${#numbers.formatDecimal(jogo.preco, 1, 'COMMA', 2, 'POINT')}"></p>
+                  <a target="_blank" th:href="@{${jogo.url}}" class="btn btn-outline-info btn-lg px-5">Ver Mais</a>
+                  <a th:href="@{/jogo}" class="btn btn-outline-danger btn-lg px-5">Voltar</a>
+  
+                </div>
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </th:block>
+</body>
+</html>

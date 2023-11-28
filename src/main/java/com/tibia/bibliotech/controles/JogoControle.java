@@ -28,6 +28,12 @@ public class JogoControle {
     return "/jogo/lista";
   }
 
+  @GetMapping("/detalhes/{id}")
+  public String detalhes(Model model, @PathVariable Long id) {
+    model.addAttribute("jogo", jogoServico.buscarPeloId(id));
+    return "jogo/detalhes";
+  }
+
   @GetMapping("/cadastro")
   public String cadastro(Model model) {
     model.addAttribute("jogo", new Jogo());

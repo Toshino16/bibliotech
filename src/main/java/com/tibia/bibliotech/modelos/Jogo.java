@@ -20,7 +20,7 @@ public class Jogo {
   private Float preco;
   private String url;
   private String imagem;
-  @Column(length = 350)
+  @Column(length = 550)
   private String descricao;
   @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date cadastradoEm;

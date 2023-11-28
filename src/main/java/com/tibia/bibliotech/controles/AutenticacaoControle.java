@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tibia.bibliotech.modelos.Usuario;
+import com.tibia.bibliotech.servicos.AutenticacaoServico;
 import com.tibia.bibliotech.servicos.UsuarioServico;
 
 @Controller @RequestMapping("/")
 public class AutenticacaoControle {
 
   @Autowired
-  public UsuarioServico usuarioServico;
+  private AutenticacaoServico autenticacaoServico;
+  @Autowired
+  private UsuarioServico usuarioServico;
 
   @GetMapping("/login")
   public String login(Model model) {
@@ -31,15 +34,22 @@ public class AutenticacaoControle {
 
   @PostMapping("/login")
   public String login(@ModelAttribute Usuario usuario) {
-    System.out.println(usuario);
-    return "redirect:/jogo";
+    if(autenticacaoServico.autenticar(usuario)) {
+      return "redirect:/jogo";
+    }
+    return "redirect:/login";
   }
 
   @PostMapping("/cadastro")
   public String cadastro(@ModelAttribute Usuario usuario) {
-    usuarioServico.criar(usuario);
+    autenticacaoServico.autenticar(usuarioServico.criar(usuario));
     return "redirect:/jogo";
   }
 
+  @GetMapping("/logout")
+  public String logout() {
+    autenticacaoServico.sair();
+    return "redirect:/login";
+  }
   
 }

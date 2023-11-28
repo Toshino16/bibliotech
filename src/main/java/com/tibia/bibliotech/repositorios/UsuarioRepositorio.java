@@ -9,5 +9,6 @@ import com.tibia.bibliotech.modelos.Usuario;
 public interface UsuarioRepositorio extends JpaRepository <Usuario,Long>{
 
   public Usuario findByNomeAndSenha(String nome, String senha);
+  public Usuario findByNome(String nome);
     
 }

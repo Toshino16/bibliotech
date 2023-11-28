@@ -18,7 +18,7 @@
                     <div class="table-responsive">
                       <table class="table table-dark table-hover table-borderless mb-0">
                         <span class="h1">Lista de Jogos</span>
-                        <a th:href="@{jogo/cadastro}" class="btn btn-success mx-3">+</a>
+                        <a th:href="@{jogo/cadastro}" class="btn btn-success mx-3" th:if="${auth.admin()}">+</a>
                         <thead>
                           <tr>
                             <th scope="col">ID</th>
@@ -36,8 +36,10 @@
                             <td th:text="${{jogo.cadastradoEm}}"></td>
                             <td colspan="3">
                               <a th:href="@{'/jogo/detalhes/' + ${jogo.id}}" class="btn btn-info">Detalhes</a>
-                              <a th:href="@{'/jogo/editar/' + ${jogo.id}}" class="btn btn-success">Editar</a>
-                              <a th:href="@{'/jogo/deletar/' + ${jogo.id}}" class="btn btn-danger">Deletar</a>
+                              <span th:if="${auth.admin()}">
+                                <a th:href="@{'/jogo/editar/' + ${jogo.id}}" class="btn btn-success">Editar</a>
+                                <a th:href="@{'/jogo/deletar/' + ${jogo.id}}" class="btn btn-danger">Deletar</a>
+                              </span>
                             </td>
                           </tr>
                         </tbody>

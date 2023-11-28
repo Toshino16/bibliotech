@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tibia.bibliotech.modelos.Usuario;
+import com.tibia.bibliotech.servicos.AutenticacaoServico;
 import com.tibia.bibliotech.servicos.UsuarioServico;
 
 @Controller @RequestMapping("/usuario")
 public class UsuarioControle {
 
+  @Autowired
+  private AutenticacaoServico autenticacaoServico;
   @Autowired
   private UsuarioServico usuarioServico;
 
@@ -38,7 +41,7 @@ public class UsuarioControle {
 
   @PostMapping("/editar/{id}")
   public String editar(@ModelAttribute Usuario usuario, @PathVariable Long id) {
-    usuarioServico.editarPeloId(usuario, id);
+    autenticacaoServico.autenticar(usuarioServico.editarPeloId(usuario, id));
     return "redirect:/jogo";
   }
 

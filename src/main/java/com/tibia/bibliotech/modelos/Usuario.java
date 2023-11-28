@@ -21,4 +21,8 @@ public class Usuario {
   @DateTimeFormat(pattern = "dd/MM/yyyy")
   private Date criadoEm;
 
+  public boolean admin() {
+    return nome.equals("admin");
+  }
+
 }

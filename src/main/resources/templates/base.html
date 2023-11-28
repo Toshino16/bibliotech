@@ -30,16 +30,14 @@
             <a class="nav-link mx-2" th:href="@{/jogo}"><i class="fas fa-plus-circle pe-2"></i>Jogos</a>
           </li>
           <!-- if auth.nome == "admin" -->
-          <li class="nav-item">
+          <li class="nav-item" th:if="${auth.admin()}">
             <a class="nav-link mx-2" th:href="@{/usuario}"><i class="fas fa-bell pe-2"></i>Usuários</a>
           </li>
           <!-- endif -->
           <li class="nav-item dropdown">
-            <a class="nav-link mx-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Conta
-            </a>
+            <a class="nav-link mx-2 dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" th:text="${auth.nome}"></a>
             <ul class="dropdown-menu">
-              <!-- <li><a class="dropdown-item" th:href="@{'/usuario/editar/' + ${auth.id}}">Editar</a></li> -->
+              <li><a class="dropdown-item" th:href="@{'/usuario/editar/' + ${auth.id}}">Editar Conta</a></li>
               <li><a class="dropdown-item" th:href="@{/logout}">Sair</a></li>
             </ul>
           </li>

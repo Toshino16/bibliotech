@@ -22,7 +22,7 @@ public class Usuario {
   private Date criadoEm;
 
   public boolean admin() {
-    return nome.equals("admin");
+    return nome != null && nome.equals("admin");
   }
 
 }

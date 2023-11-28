@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tibia.bibliotech.BibliotechApplication;
 import com.tibia.bibliotech.modelos.Jogo;
 import com.tibia.bibliotech.servicos.JogoServico;
 
@@ -25,25 +26,25 @@ public class JogoControle {
   @GetMapping
   public String lista(Model model) {
     model.addAttribute("lista", jogoServico.lista());
-    return "/jogo/lista";
+    return BibliotechApplication.redirecionarSeNaoEstiverLogado("/jogo/lista");
   }
 
   @GetMapping("/detalhes/{id}")
   public String detalhes(Model model, @PathVariable Long id) {
     model.addAttribute("jogo", jogoServico.buscarPeloId(id));
-    return "jogo/detalhes";
+    return BibliotechApplication.redirecionarSeNaoEstiverLogado("jogo/detalhes");
   }
 
   @GetMapping("/cadastro")
   public String cadastro(Model model) {
     model.addAttribute("jogo", new Jogo());
-    return "/jogo/cadastro";
+    return BibliotechApplication.redirecionarSeNaoTemPermissao("/jogo/cadastro");
   }
 
   @GetMapping("/editar/{id}")
   public String editar(Model model, @PathVariable Long id) {
     model.addAttribute("jogo", jogoServico.buscarPeloId(id));
-    return "/jogo/editar";
+    return BibliotechApplication.redirecionarSeNaoTemPermissao("/jogo/editar");
   }
 
   @PostMapping("/cadastro")
@@ -55,7 +56,7 @@ public class JogoControle {
   @GetMapping("/deletar/{id}")
   public String deletar(@PathVariable Long id) {
     jogoServico.deletarPeloId(id);
-    return "redirect:/jogo";
+    return BibliotechApplication.redirecionarSeNaoTemPermissao("redirect:/jogo");
   }
 
   @PostMapping("/editar/{id}")

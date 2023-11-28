@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.tibia.bibliotech.BibliotechApplication;
 import com.tibia.bibliotech.modelos.Usuario;
 import com.tibia.bibliotech.servicos.AutenticacaoServico;
 import com.tibia.bibliotech.servicos.UsuarioServico;
@@ -24,7 +25,7 @@ public class UsuarioControle {
   @GetMapping
   public String lista(Model model) {
     model.addAttribute("lista", usuarioServico.lista());
-    return "/usuario/lista";
+    return BibliotechApplication.redirecionarSeNaoTemPermissao("/usuario/lista");
   }
 
   @GetMapping("/editar/{id}")

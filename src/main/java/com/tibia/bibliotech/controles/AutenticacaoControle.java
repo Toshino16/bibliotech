@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tibia.bibliotech.modelos.Usuario;
 import com.tibia.bibliotech.servicos.AutenticacaoServico;
@@ -21,8 +22,9 @@ public class AutenticacaoControle {
   private UsuarioServico usuarioServico;
 
   @GetMapping("/login")
-  public String login(Model model) {
+  public String login(Model model, @RequestParam(defaultValue = "false") boolean invalido) {
     model.addAttribute("usuario", new Usuario());
+    model.addAttribute("invalido", invalido);
     return "/usuario/login";
   }
 
@@ -37,7 +39,7 @@ public class AutenticacaoControle {
     if(autenticacaoServico.autenticar(usuario)) {
       return "redirect:/jogo";
     }
-    return "redirect:/login";
+    return "redirect:/login?invalido=true";
   }
 
   @PostMapping("/cadastro")
